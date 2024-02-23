@@ -2,7 +2,7 @@
 
 # RF
 
-- [] Deve ser possivel criar um usuario
+- [x] Deve ser possivel criar um usuario
 - [] Deve ser possivel logar um usuario
 - [] Deve ser possivel editar um usuario
 - [] Deve ser possivel acessar um usuario
