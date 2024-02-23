@@ -1,5 +1,5 @@
 import { it, beforeAll, describe, expect, beforeEach } from 'vitest'
-import { UserRepositoryInMemory } from '../src/repositories/inMemoryRepositories/UserRepositoryInMemory'
+import { UserRepositoryInMemory } from '../src/repositories/InMemoryRepositories/UserRepositoryInMemory'
 import { CreateUserService } from '../src/services/CreateUserService'
 import { randomUUID } from 'crypto'
 import { UserWithSameUsernameArleadyExistsError } from '../src/errors/UserWithSameUsernameArleadyExistsError'

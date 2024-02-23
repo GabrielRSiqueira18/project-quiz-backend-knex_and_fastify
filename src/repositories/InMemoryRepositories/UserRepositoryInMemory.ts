@@ -1,4 +1,4 @@
-import { randomUUID } from "crypto";
+import { UUID, randomUUID } from "crypto";
 import { UserTypes } from "../../entities/types/UserTypes";
 import { UserRepository } from "../Interfaces/UserRepository";
 
@@ -24,6 +24,12 @@ export class UserRepositoryInMemory implements UserRepository {
     const target = this.items.find(item => item.username == username) ?? null 
 
     return target
+  }
+
+  async findById(id: UUID) {
+    const user = this.items.find(item => item.id === id) ?? null
+
+    return user
   }
 }
 
