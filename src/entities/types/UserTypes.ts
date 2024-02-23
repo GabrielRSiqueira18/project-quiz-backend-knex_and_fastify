@@ -1,7 +1,7 @@
 import { UUID } from "crypto"
 
 export interface UserTypes {
-  id: UUID
+  id?: UUID
   sessionId: UUID
   username: string
   password: string

@@ -1,10 +1,10 @@
 import { UUID } from 'crypto';
 import { UserTypes } from '../../entities/types/UserTypes';
-import { User } from '../../entities/User';
 
 interface DataProps {
-  username: string
-  password: string
+  title: string
+  description: string
+  type: string
 }
 
 export interface UserRepository {

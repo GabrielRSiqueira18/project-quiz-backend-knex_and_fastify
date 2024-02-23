@@ -1,19 +1,20 @@
 import { UUID, randomUUID } from "crypto";
 import { UserTypes } from "../../entities/types/UserTypes";
 import { UserRepository } from "../Interfaces/UserRepository";
+import { User } from "../../entities/User";
 
 export class UserRepositoryInMemory implements UserRepository {
   public items: UserTypes[] = []
 
   async create(data: UserTypes) {
-    const user: UserTypes = {
-      id: data.id ?? randomUUID(),
-      password: data.password,
-      username: data.username,
-      sessionId: data.sessionId ?? randomUUID(),
-      createdAt: data.createdAt ?? new Date(),
-      updatedAt: data.updatedAt ?? new Date()
-    }
+    const user: UserTypes = new User(
+      data.id ?? randomUUID(),
+      data.sessionId ?? randomUUID(),
+      data.username,
+      data.password,
+      data.createdAt ?? new Date(),
+      data.updatedAt ?? new Date()
+    )
 
     this.items.push(user)
 
