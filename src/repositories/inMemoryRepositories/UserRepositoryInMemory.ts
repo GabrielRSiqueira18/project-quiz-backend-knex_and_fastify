@@ -19,5 +19,11 @@ export class UserRepositoryInMemory implements UserRepository {
 
     return user 
   }
+
+  async findByUsername(username: string) {
+    const target = this.items.find(item => item.username == username) ?? null 
+
+    return target
+  }
 }
 
