@@ -1,7 +1,7 @@
 import { UUID } from 'crypto';
 import { UserRepository } from '../repositories/Interfaces/UserRepository';
-import { UserTypes } from '../entities/types/UserTypes';
 import { UserWithSameUsernameArleadyExistsError } from '../errors/UserWithSameUsernameArleadyExistsError';
+import { User } from '../entities/User';
 
 interface CreateGymServiceRequest {
   sessionId?: UUID
@@ -12,7 +12,7 @@ interface CreateGymServiceRequest {
 }
 
 interface CreateGymServiceResponse {
-  user: UserTypes
+  user: User
 }
 
 export class CreateUserService {

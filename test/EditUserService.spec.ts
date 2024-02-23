@@ -4,6 +4,7 @@ import { CreateUserService } from '../src/services/CreateUserService'
 import { randomUUID } from 'crypto'
 import { UserWithSameUsernameArleadyExistsError } from '../src/errors/UserWithSameUsernameArleadyExistsError'
 import { EditUserService } from '../src/services/EditUserService'
+import { User } from '../src/entities/User'
 
 let usersRepository: UserRepositoryInMemory
 let sut: EditUserService
@@ -16,13 +17,20 @@ describe('Edit User Service', async () => {
 
   it('should be to edit a user', async () => {
     const id = randomUUID()
+    const sessionId = randomUUID()
+    const username = 'username'
+    const password = 'password'
+    const createdAt = new Date()
+    const updatedAt = new Date()
 
-    usersRepository.items.push({
+    usersRepository.items.push(new User(
       id,
-      sessionId: randomUUID(),
-      username: 'gabriel',
-      password: 'password',
-    })
+      sessionId,
+      username,
+      password,
+      createdAt,
+      updatedAt
+    ))
 
     const { userEdited } = await sut.execute({
       id,

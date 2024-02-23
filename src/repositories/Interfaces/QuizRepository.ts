@@ -7,8 +7,8 @@ interface DataProps {
   type: string
 }
 
-export interface UserRepository {
+export interface QuizRepository {
   create(data: DataProps): Promise<UserTypes>
-  findByUsername(username: string): Promise<UserTypes | null>
   findById(id: UUID): Promise<UserTypes | null>
+  findByTitle(title: string): Promise<UserTypes | null>
 }

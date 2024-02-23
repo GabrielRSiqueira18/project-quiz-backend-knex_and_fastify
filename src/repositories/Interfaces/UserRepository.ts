@@ -1,14 +1,9 @@
 import { UUID } from 'crypto';
-import { UserTypes } from '../../entities/types/UserTypes';
 import { User } from '../../entities/User';
-
-interface DataProps {
-  username: string
-  password: string
-}
+import { ExcludeKeys } from '../../utils/ExcludeKeys';
 
 export interface UserRepository {
-  create(data: DataProps): Promise<UserTypes>
-  findByUsername(username: string): Promise<UserTypes | null>
-  findById(id: UUID): Promise<UserTypes | null>
+  create(data: ExcludeKeys<User, 'id'| 'createdAt' | 'updatedAt' | 'sessionId'>): Promise<User>
+  findById(id: UUID): Promise<User | null>
+  findByUsername(username: string): Promise<User | null>
 }

@@ -1,19 +1,19 @@
 import { UUID, randomUUID } from "crypto";
-import { UserTypes } from "../../entities/types/UserTypes";
 import { UserRepository } from "../Interfaces/UserRepository";
 import { User } from "../../entities/User";
+import { ExcludeKeys } from "../../utils/ExcludeKeys"
 
 export class UserRepositoryInMemory implements UserRepository {
-  public items: UserTypes[] = []
+  public items: User[] = []
 
-  async create(data: UserTypes) {
-    const user: UserTypes = new User(
-      data.id ?? randomUUID(),
+  async create(data: ExcludeKeys<User, 'id'| 'createdAt' | 'updatedAt'>) {
+    const user = new User(
+      randomUUID(),
       data.sessionId ?? randomUUID(),
       data.username,
       data.password,
-      data.createdAt ?? new Date(),
-      data.updatedAt ?? new Date()
+      new Date(),
+      new Date()
     )
 
     this.items.push(user)
