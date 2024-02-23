@@ -5,8 +5,8 @@ export class User {
   private _sessionId: UUID
   private _username: string
   private _password: string
-  private _createdAt: Date
-  private _updatedAt: Date
+  private _createdAt?: Date
+  private _updatedAt?: Date
   
   constructor(
     id: UUID, 
@@ -40,11 +40,11 @@ export class User {
   }
 
   public get createdAt(): Date {
-    return this._createdAt
+    return this._createdAt!
   }
 
   public get updatedAt(): Date {
-    return this._updatedAt
+    return this._updatedAt!
   }
   
   public set username(username: string) {
