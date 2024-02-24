@@ -1,7 +1,8 @@
-import { UUID, randomUUID } from "crypto";
-import { UserRepository } from "../Interfaces/UserRepository";
-import { User } from "../../entities/User";
-import { ExcludeKeys } from "../../utils/ExcludeKeys"
+import { User } from "@/entities/User"
+import { ExcludeKeys } from "@/utils/ExcludeKeys"
+import { randomUUID, UUID } from "crypto"
+import { UserRepository } from "../Interfaces/UserRepository"
+
 
 export class UserRepositoryInMemory implements UserRepository {
   public items: User[] = []

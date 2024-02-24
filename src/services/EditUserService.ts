@@ -1,8 +1,7 @@
-import { UUID } from 'crypto';
-import { UserRepository } from '../repositories/Interfaces/UserRepository';
-import { UserTypes } from '../entities/types/UserTypes';
-import { UserWithSameUsernameArleadyExistsError } from '../errors/UserWithSameUsernameArleadyExistsError';
-import { InexistentUserError } from '../errors/InexistentUserError';
+import { User } from "@/entities/User"
+import { InexistentUserError } from "@/errors/InexistentUserError"
+import { UserRepository } from "@/repositories/Interfaces/UserRepository"
+import { UUID } from "crypto"
 
 interface EditGymServiceRequest {
   id: UUID
@@ -11,7 +10,7 @@ interface EditGymServiceRequest {
 }
 
 interface EditGymServiceResponse {
-  userEdited: UserTypes
+  user: User
 }
 
 export class EditUserService {
@@ -24,12 +23,9 @@ export class EditUserService {
       throw new InexistentUserError()
     }
 
-    const userEdited = {
-      ...user,
-      username: username ?? user.username,
-      password: password ?? user.password
-    }
+    user.password = password ?? user.password
+    user.username = username ?? user.username
 
-    return { userEdited }
+    return { user }
   }
 }

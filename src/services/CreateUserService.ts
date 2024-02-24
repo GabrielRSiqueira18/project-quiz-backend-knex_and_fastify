@@ -1,7 +1,7 @@
-import { UUID } from 'crypto';
-import { UserRepository } from '../repositories/Interfaces/UserRepository';
-import { UserWithSameUsernameArleadyExistsError } from '../errors/UserWithSameUsernameArleadyExistsError';
-import { User } from '../entities/User';
+import { User } from "@/entities/User"
+import { UserWithSameUsernameArleadyExistsError } from "@/errors/UserWithSameUsernameArleadyExistsError"
+import { UserRepository } from "@/repositories/Interfaces/UserRepository"
+import { UUID } from "crypto"
 
 interface CreateGymServiceRequest {
   sessionId?: UUID

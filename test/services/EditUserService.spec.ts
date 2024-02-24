@@ -1,10 +1,8 @@
-import { it, beforeAll, describe, expect, beforeEach } from 'vitest'
-import { UserRepositoryInMemory } from '../src/repositories/InMemoryRepositories/UserRepositoryInMemory'
-import { CreateUserService } from '../src/services/CreateUserService'
-import { randomUUID } from 'crypto'
-import { UserWithSameUsernameArleadyExistsError } from '../src/errors/UserWithSameUsernameArleadyExistsError'
-import { EditUserService } from '../src/services/EditUserService'
-import { User } from '../src/entities/User'
+import { User } from "@/entities/User"
+import { UserRepositoryInMemory } from "@/repositories/InMemoryRepositories/UserRepositoryInMemory"
+import { EditUserService } from "@/services/EditUserService"
+import { randomUUID } from "crypto"
+import { describe, beforeEach, it, expect } from "vitest"
 
 let usersRepository: UserRepositoryInMemory
 let sut: EditUserService
@@ -32,12 +30,12 @@ describe('Edit User Service', async () => {
       updatedAt
     ))
 
-    const { userEdited } = await sut.execute({
+    const { user } = await sut.execute({
       id,
       username: 'edited',
     })
 
-    expect(userEdited).toEqual(
+    expect(user).toEqual(
       expect.objectContaining({
         username: 'edited',
         password: 'password'

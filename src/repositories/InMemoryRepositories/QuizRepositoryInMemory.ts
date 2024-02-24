@@ -1,9 +1,8 @@
+import { Quiz } from "@/entities/Quiz"
 import { randomUUID, UUID } from "crypto"
-import { Quiz } from "../../entities/Quiz"
 import { QuizRepository } from "../Interfaces/QuizRepository"
 
 export class QuizRepositoryInMemory implements QuizRepository {
-  
   public items: Quiz[] = []
 
   async create(data: Quiz) {
@@ -22,14 +21,16 @@ export class QuizRepositoryInMemory implements QuizRepository {
     return quiz 
   }
 
-  findByTitle(title: string): Promise<UserTypes | null> {
-    throw new Error("Method not implemented.")
+  async findByTitle(title: string) {
+    const quiz = this.items.find(item => item.title === title) ?? null
+
+    return quiz
   }
 
   async findById(id: UUID) {
-    const user = this.items.find(item => item.id === id) ?? null
+    const quiz = this.items.find(item => item.id === id) ?? null
 
-    return user
+    return quiz
   }
 }
 
