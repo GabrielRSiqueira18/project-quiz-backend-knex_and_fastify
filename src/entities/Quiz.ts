@@ -55,15 +55,15 @@ export class Quiz {
   }
   
   public set title(title: string) {
-    this.title = title
+    this._title = title
   }
 
   public set description(description: string) {
-    this.description = description
+    this._description = description
   }
 
   public set type(type: string) {
-    this.type = type
+    this._type = type
   }
   
 }
