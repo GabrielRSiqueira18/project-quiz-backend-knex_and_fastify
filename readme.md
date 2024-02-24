@@ -7,14 +7,14 @@
 - [] Deve ser possivel logar um usuario
 
 - [x] Deve ser possivel criar um quiz
-- [] Deve ser possivel editar um quiz
+- [x] Deve ser possivel editar um quiz
 - [] Deve ser possivel excluir um quiz
 - [] Deve ser possivel visualizar pontuacao dos quiz que o usuario realizou
 - [] Deve ser possivel visualizar a soma de pontuacao dos usuarios
 
-- [] Deve ser possivel criar uma pergunta para o quiz
-- [] Deve ser possivel editar uma pergunta para o quiz
-- [] Deve ser possivel remover uma pergunta para o quiz
+- [x] Deve ser possivel criar uma pergunta para o quiz
+- [x] Deve ser possivel editar uma pergunta para o quiz
+- [] Deve ser possivel excluir uma pergunta para o quiz
 
 - [] Deve ser possivel localizar a pergunta pelo tipo e colocar no quiz
 
