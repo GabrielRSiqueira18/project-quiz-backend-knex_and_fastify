@@ -1,10 +1,6 @@
 import { Quiz } from "@/entities/Quiz"
-import { User } from "@/entities/User"
 import { QuizRepositoryInMemory } from "@/repositories/InMemoryRepositories/QuizRepositoryInMemory"
-import { UserRepositoryInMemory } from "@/repositories/InMemoryRepositories/UserRepositoryInMemory"
-import { QuizRepository } from "@/repositories/Interfaces/QuizRepository"
 import { EditQuizService } from "@/services/EditQuizService"
-import { EditUserService } from "@/services/EditUserService"
 import { randomUUID } from "crypto"
 import { describe, beforeEach, it, expect } from "vitest"
 
@@ -20,6 +16,7 @@ describe('Edit Quiz Service', async () => {
   it('should be to edit a quiz', async () => {
     const id = randomUUID()
     const sessionId = randomUUID()
+    const userPlayedId = randomUUID()
     const title = 'title'
     const description = 'description'
     const type = 'type'
@@ -29,6 +26,7 @@ describe('Edit Quiz Service', async () => {
     quizRepository.items.push(new Quiz(
       id,
       sessionId,
+      userPlayedId,
       title,
       description,
       type,

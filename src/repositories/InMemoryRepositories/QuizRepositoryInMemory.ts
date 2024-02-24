@@ -9,6 +9,7 @@ export class QuizRepositoryInMemory implements QuizRepository {
     const quiz = new Quiz(
       data.id ?? randomUUID(),
       data.userId ?? randomUUID(),
+      data.userPlayedId ?? null,
       data.title,
       data.description,
       data.type,

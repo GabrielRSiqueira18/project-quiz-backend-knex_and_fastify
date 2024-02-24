@@ -1,9 +1,6 @@
 import { QuizWithSameTitleArleadyExistsError } from "@/errors/QuizWithSameTitleArleadyExistsError"
-import { UserWithSameUsernameArleadyExistsError } from "@/errors/UserWithSameUsernameArleadyExistsError"
 import { QuizRepositoryInMemory } from "@/repositories/InMemoryRepositories/QuizRepositoryInMemory"
-import { UserRepositoryInMemory } from "@/repositories/InMemoryRepositories/UserRepositoryInMemory"
 import { CreateQuizService } from "@/services/CreateQuizService"
-import { CreateUserService } from "@/services/CreateUserService"
 import { randomUUID } from "crypto"
 import { describe, beforeEach, it, expect } from "vitest"
 

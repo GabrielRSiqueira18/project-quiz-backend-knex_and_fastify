@@ -1,9 +1,7 @@
 import { UUID } from "crypto";
 
-export class Quiz {
+export class Question {
   private _id: UUID
-  private _userId: UUID
-  private _userPlayedId: UUID
   private _title: string
   private _description: string
   private _type: string
@@ -12,16 +10,12 @@ export class Quiz {
   
   constructor(
     id: UUID, 
-    userId: UUID, 
-    userPlayedId: UUID,
     title: string, 
     description: string, 
     type: string,
     createdAt: Date, 
     updatedAt: Date) {
       this._id = id
-      this._userId = userId
-      this._userPlayedId = userPlayedId
       this._title = title
       this._description = description
       this._type = type
@@ -31,14 +25,6 @@ export class Quiz {
   
   public get id(): UUID {
     return this._id 
-  }
-  
-  public get userId(): UUID {
-    return this._userId
-  }
-
-  public get userPlayedId(): UUID {
-    return this._userPlayedId
   }
 
   public get title(): string {
@@ -71,10 +57,6 @@ export class Quiz {
 
   public set type(type: string) {
     this._type = type
-  }
-
-  public set userPlayedId(userPlayedId: UUID) {
-    this._userPlayedId = userPlayedId
   }
   
 }
