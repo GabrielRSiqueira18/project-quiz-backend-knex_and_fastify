@@ -4,7 +4,6 @@ import { QuizWithSameTitleArleadyExistsError } from "@/errors/QuizWithSameTitleA
 import { Quiz } from "@/entities/Quiz";
 
 interface CreateQuizServiceRequest {
-  userId?: UUID
   userPlayedId?: UUID
   title: string
   description: string
@@ -20,7 +19,7 @@ interface CreateQuizServiceResponse {
 export class CreateQuizService {
   constructor(private quizRepository: QuizRepository) {}
 
-  public async execute({ title, description, type, userId, userPlayedId }: CreateQuizServiceRequest): Promise<CreateQuizServiceResponse> {
+  public async execute({ title, description, type }: CreateQuizServiceRequest): Promise<CreateQuizServiceResponse> {
     const quizWithSameTitleArleadyExists = await this.quizRepository.findByTitle(title)
 
     if (quizWithSameTitleArleadyExists) {
@@ -31,8 +30,7 @@ export class CreateQuizService {
       title,
       description,
       type,
-      userPlayedId: userPlayedId ?? randomUUID(), 
-      userId: userId ?? randomUUID()
+      
     })
 
     return { quiz }
