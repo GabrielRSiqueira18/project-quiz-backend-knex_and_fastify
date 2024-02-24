@@ -1,8 +1,8 @@
-import { it, beforeAll, describe, expect, beforeEach } from 'vitest'
-import { UserRepositoryInMemory } from '../src/repositories/inMemoryRepositories/UserRepositoryInMemory'
-import { CreateUserService } from '../src/services/CreateUserService'
-import { randomUUID } from 'crypto'
-import { UserWithSameUsernameArleadyExistsError } from '../src/errors/UserWithSameUsernameArleadyExistsError'
+import { UserWithSameUsernameArleadyExistsError } from "@/errors/UserWithSameUsernameArleadyExistsError"
+import { UserRepositoryInMemory } from "@/repositories/InMemoryRepositories/UserRepositoryInMemory"
+import { CreateUserService } from "@/services/CreateUserService"
+import { randomUUID } from "crypto"
+import { describe, beforeEach, it, expect } from "vitest"
 
 let usersRepository: UserRepositoryInMemory
 let sut: CreateUserService
@@ -23,7 +23,7 @@ describe('Create User Service', async () => {
     expect(user.id).toEqual(expect.any(String))
   })
 
-  it('not should be to create a new user with same username', async () => {
+  it('should not be to create a new user with same username', async () => {
     await sut.execute({
       sessionId: randomUUID(),
       password: 'password',

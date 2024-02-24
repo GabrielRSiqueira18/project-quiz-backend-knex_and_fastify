@@ -48,11 +48,11 @@ export class User {
   }
   
   public set username(username: string) {
-    this.username = username
+    this._username = username
   }
 
   public set password(password: string) {
-    this.password = password
+    this._password = password
   }
   
 }
