@@ -8,8 +8,8 @@ export class QuizRepositoryInMemory implements QuizRepository {
   async create(data: Quiz) {
     const quiz = new Quiz(
       data.id ?? randomUUID(),
-      data.userId ?? randomUUID(),
-      data.userPlayedId ?? null,
+      data.userId,
+      data.userPlayedId,
       data.title,
       data.description,
       data.type,

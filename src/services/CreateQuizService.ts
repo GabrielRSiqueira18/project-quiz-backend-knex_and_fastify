@@ -1,10 +1,11 @@
-import { UUID } from "crypto"
+import { UUID, randomUUID } from "crypto"
 import { QuizRepository } from '../repositories/Interfaces/QuizRepository';
 import { QuizWithSameTitleArleadyExistsError } from "@/errors/QuizWithSameTitleArleadyExistsError";
 import { Quiz } from "@/entities/Quiz";
 
 interface CreateQuizServiceRequest {
-  sessionId?: UUID
+  userId?: UUID
+  userPlayedId?: UUID
   title: string
   description: string
   type: string
@@ -19,7 +20,7 @@ interface CreateQuizServiceResponse {
 export class CreateQuizService {
   constructor(private quizRepository: QuizRepository) {}
 
-  public async execute({ title, description, type }: CreateQuizServiceRequest): Promise<CreateQuizServiceResponse> {
+  public async execute({ title, description, type, userId, userPlayedId }: CreateQuizServiceRequest): Promise<CreateQuizServiceResponse> {
     const quizWithSameTitleArleadyExists = await this.quizRepository.findByTitle(title)
 
     if (quizWithSameTitleArleadyExists) {
@@ -29,7 +30,9 @@ export class CreateQuizService {
     const quiz = await this.quizRepository.create({
       title,
       description,
-      type
+      type,
+      userPlayedId: userPlayedId ?? randomUUID(), 
+      userId: userId ?? randomUUID()
     })
 
     return { quiz }

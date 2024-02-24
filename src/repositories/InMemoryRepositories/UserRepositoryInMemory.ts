@@ -10,7 +10,7 @@ export class UserRepositoryInMemory implements UserRepository {
   async create(data: ExcludeKeys<User, 'id'| 'createdAt' | 'updatedAt'>) {
     const user = new User(
       randomUUID(),
-      data.sessionId ?? randomUUID(),
+      data.sessionId,
       data.username,
       data.password,
       new Date(),
